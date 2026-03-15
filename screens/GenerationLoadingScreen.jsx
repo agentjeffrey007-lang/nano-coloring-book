@@ -28,8 +28,8 @@ export default function GenerationLoadingScreen({
   allImagesGenerated,
   isFirstImageReady,
 }) {
-  const swipeAnim = useRef(new Animated.Value(0)).start();
-  const opacityAnim = useRef(new Animated.Value(0)).start();
+  const swipeAnim = useRef(new Animated.Value(0));
+  const opacityAnim = useRef(new Animated.Value(0));
 
   // Animate swipe when generation progresses
   useEffect(() => {

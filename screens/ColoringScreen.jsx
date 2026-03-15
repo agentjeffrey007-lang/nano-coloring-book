@@ -27,6 +27,26 @@ export default function ColoringScreen({ route, navigation }) {
   const [strokes, setStrokes] = useState({}); // per-page strokes: { [pageIdx]: [{ points, color, size }] }
   const [currentStroke, setCurrentStroke] = useState(null);
 
+  // Load saved strokes from AsyncStorage on component mount
+  useEffect(() => {
+    const loadStrokes = async () => {
+      try {
+        const key = `coloring_${book.id}`;
+        const saved = await AsyncStorage.getItem(key);
+        if (saved) {
+          const { strokes: savedStrokes, selectedPaletteIdx: savedPaletteIdx } = JSON.parse(saved);
+          setStrokes(savedStrokes || {});
+          if (savedPaletteIdx !== undefined) {
+            setSelectedPaletteIdx(savedPaletteIdx);
+          }
+        }
+      } catch (error) {
+        console.warn('Error loading coloring strokes:', error);
+      }
+    };
+    loadStrokes();
+  }, [book.id]);
+
   // Use refs to capture current values in PanResponder
   const colorRef = useRef(selectedColor);
   const brushSizeRef = useRef(brushSize);
