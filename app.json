@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "Nano Coloring",
+    "slug": "nano-coloring-book",
+    "version": "0.1.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTabletMode": true,
+      "bundleIdentifier": "com.nanocolor.book"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.nanocolor.book"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to create custom coloring books.",
+          "cameraPermission": "The app uses your camera to capture images for coloring books."
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "nano-coloring-book"
+      }
+    }
+  }
+}
